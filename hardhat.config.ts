@@ -14,10 +14,24 @@ if (!process.env.ETHERSCAN_API_KEY) {
     "NOTE: environment variable ETHERSCAN_API_KEY isn't set. tasks that interact with etherscan won't work"
   );
 }
+if (!process.env.INFURA_API_KEY) {
+  console.log(
+    "NOTE: environment variable INFURA_API_KEY isn't set. Tasks that interact with remote Rinkeby network won't work"
+  );
+}
+if (!process.env.RINKEBY_PRIVATE_KEY) {
+  console.log(
+    "NOTE: environment variable RINKEBY_PRIVATE_KEY isn't set. Tasks that interact with remote Rinkeby network won't work"
+  );
+}
+
 
 // You need to export an object to set up your config
 // Go to https://hardhat.org/config/ to learn more
 //
+//const INFURA_API_KEY = "24ca35f5760c4f96ba344aeb8af69590";
+//const RINKEBY_PRIVATE_KEY = '4c348d95ad4f3c4815041685cbfc8c9a028efde2747a4908ce7ad5aa0c089fea';
+
 
 /**
  * @type import('hardhat/config').HardhatUserConfig
@@ -35,6 +49,12 @@ module.exports = {
         },
       },
     ],
+  },
+  networks: {
+    rinkeby: {
+      url: `https://rinkeby.infura.io/v3/${process.env.INFURA_API_KEY}`,
+      accounts: [`${process.env.RINKEBY_PRIVATE_KEY}`],
+    }
   },
   typechain: {
     target: 'ethers-v5',

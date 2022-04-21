@@ -1,17 +1,20 @@
 import '@nomiclabs/hardhat-ethers';
 import { ethers } from 'hardhat';
-import { DemoToken__factory } from '../../typechain';
+import { HackCoinFlip__factory } from '../../typechain';
 import { DeployedContracts } from './contract-addresses';
 
-import { toAtto } from '../../shared/utils';
+//import { toAtto } from '../../shared/utils';
 
-const EPOCH_SIZE_SECONDS = 60; // Every minute for local testing
-const EPOCH_REWARD = toAtto(6849315 / 24);   // Daily rewards per hour 
+// const EPOCH_SIZE_SECONDS = 60; // Every minute for local testing
+// const EPOCH_REWARD = toAtto(6849315 / 24);   // Daily rewards per hour 
 
 async function main() {
   const [owner, account1, account2] = await ethers.getSigners();
+  console.log(owner);
 
-  const token = await new DemoToken__factory(owner).deploy();
+//   //const owner = address(0x4b39824e6AF7DA1EBDEb8D29455508a5A8b09101);
+//  // const token = await new DemoToken__factory(owner).deploy();
+  const token = await new HackCoinFlip__factory(owner).deploy();
   
   // Print config
   const deployedContracts: DeployedContracts = {

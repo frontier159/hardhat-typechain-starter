@@ -1,0 +1,10 @@
+// Used to run external on-chain calls
+// NB: It's rate limited
+// https://rinkeby.infura.io/v3/${process.env.INFURA_API_KEY}
+INFURA_API_KEY='XXX'
+
+// Private key of ethernaut rinkeby wallet
+RINKEBY_PRIVATE_KEY='XXX'
+
+// API Key for etherscan
+ETHERSCAN_API_KEY='XXX'
